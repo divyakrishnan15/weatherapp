@@ -19,49 +19,51 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
   <link rel="stylesheet" href="./Assets/style.css" />
   <title>Weather APP Divya</title>
 </head>
-  
+
 <body>
   <!-- //header -->
   <nav class="navbar navbar-light bg-light shadow rounded">
-    <span class="navbar-brand mb-0 h1 text-center">Weather DashBoard</span>
+    <span class="navbar-brand mb-0 h1 navname">Weather DashBoard</span>
   </nav>
 
   <!-- city input -->
-  <div class="container container-left w-25 float-left m-4"> 
- 
-  
-  <div class="card">
-    <h3 class="card-header text-uppercase">Search By User</h3>
-    <form id="user-form" class="card-body">
-      <label class="form-label" for="username">Username</label>
-      <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-      <button type="submit" class="btn btn-primary">Get User</button>
-    </form>
-  </div>
+  <div class="container container-left w-25 float-left">
 
-  <!-- searched history -->
-  <label for="searchedHistory" class="labelsearch-hist m-1">Searched History</label>
-  <div class="list-group">
-  </div>
+
+    <div class="card">
+      <h3 class="card-header text-uppercase">Search By City</h3>
+      <form id="user-form" class="card-body">
+        <label class="form-label" for="username">City Name:</label>
+        <input name="username" id="username" type="text" autofocus="true" class="form-input"/>
+        <button type="submit" class="btn btn-primary">search</button>
+      </form>
+    </div>
+
+    <!-- searched history -->
+    <div class="card">
+      <label for="searchedHistory" class="labelsearch-hist m-1 card-header text-uppercase">Searched History</label>
+    <div class="list-group">
+    </div>
+    </div>
   </div>
 
 
   <!-- //card -->
-  <div class="container contain-right w-75 m-5">
+  <div class="container contain-right">
 
     <div class="city-temp-maincard">
-      <div class="card w-50" style="width: 18rem;">
+      <div class="card w-75 temp-card">
         <div class="citycard-main d-flex flex-column">
           <div>
             <h2 class="citycard-cityname p-2"></h2>
             <h2 class="citycard-date p-2"></h2>
-            <img class="citycard-icon p-2" src="..." alt="sunny">
+            <img class="citycard-icon p-2" src="..." alt="">
           </div>
           <label for="citycardData" class="label m-1 p-2">Description : <span class="citycard-desc"></span></label>
           <label for="citycardData" class="label m-1 p-2">Temp : <span class="citycard-temp"></span></label>
@@ -69,15 +71,20 @@
           <label for="citycardData" class="label m-1 p-2">Humidity : <span class="citycard-humidity"></span></label>
         </div>
       </div>
+      <iframe class="google-maps" width="400" height="300" style="border:0" loading="lazy" title="map" allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+
+    <label for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </label>
+    <div class="dayForcastMain d-flex flex-row m-4 p-2">
     </div>
 
 
-    <div class="dayForcastMain d-flex flex-row m-4 p-2">
-      <label for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </label>
-      </div>
 
   </div>
 
+  <!-- </iframe> -->
 
 </body>
 
