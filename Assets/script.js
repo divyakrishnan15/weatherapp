@@ -25,16 +25,25 @@ var formSubmitHandler = function (event) {
   var city = nameInputEl.value.trim();
   console.log("city = ",city)
   if (city) {
-    getUserRepos(city);
+    getApiData(city);
+    getGoogleApiData(city)
     nameInputEl.value = '';
   } else {
-    alert('Please enter a GitHub username');
+    alert('Please enter a City name');
   }
 };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 
-var getUserRepos = function (city) {
+var getGoogleApiData = function (city) {
+  var apiUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyCy8PFgy7uGcwPxftTH3mYHuGuUDjb_gnM&q='+city
+
+  document.querySelector('.google-maps').src=apiUrl
+
+  initMap()
+}
+
+var getApiData = function (city) {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=cc86632db1a12bed0499b6fb11a002de'
    
     fetch(apiUrl)
@@ -42,7 +51,7 @@ var getUserRepos = function (city) {
         if (response.ok) {
           console.log(response);
           response.json().then(function (data) {
-            console.log(data);
+            console.log("data ===== ",data);
             console.log("api city = ", data.city.name);
             console.log("api country = ", data.city.country);
             console.log("api lat = ", data.city.coord.lat);
@@ -72,31 +81,13 @@ var getUserRepos = function (city) {
 
             todayForecast(data)
             set5DayForecast(city,data)
-            // cardDateEl.textContent = data.list[0].dt_txt;
-            // cardIconEl.textContent = data.list[0].weather[0].icon;
-            // cardTempEl.textContent = data.list[0].main.temp;
-            // cardWindEl.textContent = data.list[0].wind.speed;
-            // cardHumidityEl.textContent = data.list[0].main.temp;
 
-            
-            // console.log('date 1= ',data.list[0].dt_txt)
-            // console.log('date 2= ',data.list[8].dt_txt)
-            // console.log('date 3= ',data.list[16].dt_txt)
-            // console.log('date 4= ',data.list[24].dt_txt)
-            // console.log('date 5= ',data.list[32].dt_txt)
-
-            ;
-            // cardIconEl.textContent = data.list[0].weather[0].icon;
-            // cardTempEl.textContent = data.list[0].main.temp;
-            // cardWindEl.textContent = data.list[0].wind.speed;
-            // cardHumidityEl.textContent = data.list[0].main.temp;
-
-
-            // return data
-          });
-        } else {
-          alert('Error: ' + response.statusText);
+            initMap()
+          })
         }
+        //  else {
+        //   alert('Error: ' + response.statusText);
+        // }
       })
       .catch(function (error) {
         alert('Unable to connect');
@@ -114,25 +105,25 @@ var getUserRepos = function (city) {
     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
     cardIconEl.src=iconurl
 
-    
     //description:
     cardDescEl.textContent=data.list[0].weather[0].description
 
-    
     //Temp:
-    cardTempEl.textContent=data.list[0].main.temp
-
+    cardTempEl.textContent=Math.floor((data.list[0].main.temp)-273.15)+ '°C'
     
     //Wind:
-    cardWindEl.textContent=data.list[0].wind.speed
+    cardWindEl.textContent=Math.floor(data.list[0].wind.speed / 0.44704) +' mph'
  
     //Humidity:
-    cardHumidityEl.textContent=data.list[0].main.humidity
+    cardHumidityEl.textContent=data.list[0].main.humidity+'%'
   }
 
   function set5DayForecast(city,data){
     console.log("----set5day forecast----")
     console.log("data = ",data)
+
+    document.querySelector('.dayForcastMain').innerHTML=""
+
     for (var i=0;i<=32;i+=8){
 
        
@@ -143,40 +134,41 @@ var getUserRepos = function (city) {
         subDivEl.style.width = '200px'
         // subDivEl.setAttribute('style','width: 34rem;')
 
-        //date:
-        var h5El = document.createElement('h5')
-        h5El.textContent = data.list[i].dt_txt.slice(0,10)
-        subDivEl.appendChild(h5El)
+        
+        //description :
+        // var divDescLabelEl = document.createElement('label')
+        // divDescLabelEl.textContent='Description: '
+        var divDescEl = document.createElement('strong')
+        divDescEl.className='desc'
+        divDescEl.textContent = data.list[i].weather[0].description
+        // subDivEl.appendChild(divDescLabelEl)
+        subDivEl.appendChild(divDescEl)
+
+        //Temp:
+        // var divTempLabelEl = document.createElement('label')
+        // divTempLabelEl.textContent='Temperature : '
+        var spanTempEl = document.createElement('strong')
+        spanTempEl.className='temp'
+        spanTempEl.textContent =Math.floor((data.list[i].main.temp)-273.15)+ '°C'
+        // subDivEl.appendChild(divTempLabelEl)
+        subDivEl.appendChild(spanTempEl)
+
 
         //image:
         var iconcode = data.list[i].weather[0].icon;
         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
         var imgEl = document.createElement('img')
+        imgEl.className='img-icon'
         imgEl.src=iconurl
         imgEl.alt='image'
         subDivEl.appendChild(imgEl)
 
-        //description :
-        var divDescLabelEl = document.createElement('label')
-        divDescLabelEl.textContent='Description: '
-        var divDescEl = document.createElement('strong')
-        divDescEl.textContent = data.list[i].weather[0].description
-        subDivEl.appendChild(divDescLabelEl)
-        subDivEl.appendChild(divDescEl)
-
-        //Temp:
-        var divTempLabelEl = document.createElement('label')
-        divTempLabelEl.textContent='Temperature : '
-        var spanTempEl = document.createElement('strong')
-        spanTempEl.textContent = data.list[i].main.temp
-        subDivEl.appendChild(divTempLabelEl)
-        subDivEl.appendChild(spanTempEl)
 
         //Wind:
-        var divWindLabelEl = document.createElement('label')
+        var divWindLabelEl = document.createElement('span')
         divWindLabelEl.textContent='Wind: '
-        var spanWindEl = document.createElement('strong')
-        spanWindEl.textContent = data.list[i].wind.speed
+        var spanWindEl = document.createElement('span')
+        spanWindEl.textContent = Math.floor(data.list[i].wind.speed / 0.44704) +' mph'
         subDivEl.appendChild(divWindLabelEl)
         subDivEl.appendChild(spanWindEl)
 
@@ -184,9 +176,15 @@ var getUserRepos = function (city) {
         var divHumidLabelEl = document.createElement('label')
         divHumidLabelEl.textContent='Humidity: '
         var spanHumidityEl = document.createElement('strong')
-        spanHumidityEl.textContent = data.list[i].main.humidity
+        spanHumidityEl.textContent = data.list[i].main.humidity+'%'
         subDivEl.appendChild(divHumidLabelEl)
         subDivEl.appendChild(spanHumidityEl)
+
+        
+        //date:
+        var h5El = document.createElement('h5')
+        h5El.textContent = data.list[i].dt_txt.slice(0,10)
+        subDivEl.appendChild(h5El)
 
         document.querySelector('.dayForcastMain').appendChild(subDivEl)
 
@@ -201,15 +199,52 @@ var getUserRepos = function (city) {
     Object.keys(weatherLSdata).map((ele)=>{
         console.log("local storage length = ",ele)
 
-        var aTagEl = document.createElement('a')
-        aTagEl.setAttribute('href',ele)
+        // var aTagEl = document.createElement('a')
+        // aTagEl.setAttribute('href',ele)
+        
+        var aTagEl = document.createElement('div')
+        // aTagEl.setAttribute('href',ele)
         aTagEl.textContent = ele
         aTagEl.classList='list-group-item list-group-item-dark border-3 m-1'
         searchedHistoryEl.appendChild(aTagEl)
-    })
-    
+    })   
 
   }
+
+
+  searchedHistoryEl.addEventListener('click',searchedHistoryData)
+
+  function searchedHistoryData(event){
+    console.log("event ===== ",event.target.innerText)
+
+    var searchHistCity=event.target.innerText
+
+    if (searchHistCity) {
+      getApiData(searchHistCity);
+      getGoogleApiData(searchHistCity)
+      nameInputEl.value = '';
+    } else {
+      alert('Please enter a City name');
+    }
+
+  }
+
+
+  function initMap() {
+    const myLatLng = { lat: 43.7001, lng: -79.4163 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: myLatLng,
+    });
+  
+    new google.maps.Marker({
+      position: myLatLng,
+      map,
+      title: "Hello World!",
+    });
+  }
+  
+  window.initMap = initMap;
 
 
 
