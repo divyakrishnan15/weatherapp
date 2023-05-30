@@ -44,20 +44,76 @@ body{
 }
 
 .temp-card{
-    width: calc(50%) !important;
+    width: calc(100%) !important;
+    margin-top: 40px !important;
+    height:300px !important;
+    border-radius: 20px !important;
 }
 
+.curr-forecast{
+    /* margin: 20px 20px; */
+    width:45%;
+    
+}
 
 .city-temp-maincard > *{
     display: inline-block;
+    /* display:flex; */
+    /* flex-wrap: wrap; */
+    
+}
+
+.citycard-icon{
+    width: 200px;
+    position: absolute;
+    inset:-100px 0 0 calc(100% - 30%);
+}
+
+.citycard-desc,.citycard-temp{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-main{
+    display: flex;
+}
+
+.col1,.col2{
+    /* border: 1px solid grey; */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width:30% !important;
+    background-color:#ff0f976d;
+    width:380px;
+    margin: auto;
+}
+
+.col2{
+    background-color:#6c5df17b;
+    /* width:380px; */
+    
+}
+
+.map-main{
+    margin-left: 20px;
+    float:right !important;
+    width:47%;
 }
 
 .google-maps{
     float:right;
-    width: calc(40%);
+    width: calc(100%);
+    margin-top: 30px;
     margin-right:40px;
-    height:347px;
-    border-radius: 5px;
+    height:300px;
+    border-radius: 20px;
+}
+
+.labelsearch-hist{
+    margin:20px 0 !important;
 }
 
 .dayForcast{
@@ -67,6 +123,11 @@ body{
     /* background-color: rgba(, green, blue, alpha); */
     /* opacity: 0.8; */
 }
+
+.dayForcast:nth-of-type(1){
+    margin-left: -40px !important;
+}
+    
 
 .img-icon{
     position: absolute;

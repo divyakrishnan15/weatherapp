@@ -29,7 +29,7 @@
 <body>
   <!-- //header -->
   <nav class="navbar navbar-light bg-light shadow rounded">
-    <span class="navbar-brand mb-0 h1 navname">Weather DashBoard</span>
+    <h1 class="navbar-brand mb-0 h1 navname">Weather DashBoard</h1>
   </nav>
 
   <!-- city input -->
@@ -47,7 +47,7 @@
 
     <!-- searched history -->
     <div class="card">
-      <label for="searchedHistory" class="labelsearch-hist m-1 card-header text-uppercase">Searched History</label>
+      <h5 for="searchedHistory" class="labelsearch-hist m-1 card-header text-uppercase">Searched History</h5>
     <div class="list-group">
     </div>
     </div>
@@ -58,26 +58,48 @@
   <div class="container contain-right">
 
     <div class="city-temp-maincard">
-      <div class="card w-75 temp-card">
-        <div class="citycard-main d-flex flex-column">
-          <div>
-            <h2 class="citycard-cityname p-2"></h2>
-            <h2 class="citycard-date p-2"></h2>
-            <img class="citycard-icon p-2" src="..." alt="">
-          </div>
-          <label for="citycardData" class="label m-1 p-2">Description : <span class="citycard-desc"></span></label>
-          <label for="citycardData" class="label m-1 p-2">Temp : <span class="citycard-temp"></span></label>
-          <label for="citycardData" class="label m-1 p-2">Wind : <span class="citycard-wind"></span></label>
-          <label for="citycardData" class="label m-1 p-2">Humidity : <span class="citycard-humidity"></span></label>
-        </div>
-      </div>
-      <iframe class="google-maps" width="400" height="300" style="border:0" loading="lazy" title="map" allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+      <div class="curr-forecast">
+        <h4>Current Day Forecast:</h4>
+        <div class="card w-75 temp-card">
+          <div class="citycard-main d-flex flex-column">
+            <div>
+              <h2 class="citycard-cityname p-2"></h2>
+              
+              <img class="citycard-icon p-2" src="..." alt="">
+            </div>
+              <strong><h4 class="citycard-desc"></h4></strong>
+              <strong><h1 class="citycard-temp"></h1></strong>
+
+            <div class="col-main">
+              <div class="col1">  
+                <label for="citycardData" class="label m-1 p-2">City : <strong><span class="citycard-city"></span></strong></label>
+                <label for="citycardData" class="label m-1 p-2">Country : <strong><span class="citycard-country"></span></strong></label>
+              </div>
+
+              <div class="col2">
+                <label for="citycardData" class="label m-1 p-2">Wind : <strong><span class="citycard-wind"></span></strong></label>
+                <label for="citycardData" class="label m-1 p-2">Humidity : <strong><span class="citycard-humidity"></span></strong></label>
+            </div>
+          </div>
+            <h4 class="citycard-date p-2" style="text-align: center;margin-top: 20px;"></h4>
+          </div>
+        </div>
     </div>
 
-    <label for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </label>
+      <div class="map-main">
+        <h4>Google City Map</h4>
+        <iframe class="google-maps" width="400" height="300" style="border:0" loading="lazy" title="map" allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <br/>
+    <h4 for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </h4>
     <div class="dayForcastMain d-flex flex-row m-4 p-2">
+
+      <br/>
+      <br/>
     </div>
 
 
