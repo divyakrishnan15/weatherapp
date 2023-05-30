@@ -2,6 +2,8 @@
 var userFormEl = document.querySelector('#user-form');
 var nameInputEl = document.querySelector('#username');
 var cityBtnEl = document.querySelector('.city-btn')
+var cardCityEl = document.querySelector(".citycard-city");
+var cardCountryEl = document.querySelector(".citycard-country");
 var cardDateEl = document.querySelector(".citycard-date");
 var cardIconEl = document.querySelector(".citycard-icon");
 var cardDescEl = document.querySelector(".citycard-desc");
@@ -75,6 +77,7 @@ var getApiData = function (city) {
                 temperature:data.list[0].main.temp,
                 wind:data.list[0].wind.speed,
                 humidity:data.list[0].main.humidity,
+    
             } 
             
             localStorage.setItem('weatherLS',JSON.stringify(weatherLSdata))
@@ -110,6 +113,12 @@ var getApiData = function (city) {
 
     //Temp:
     cardTempEl.textContent=Math.floor((data.list[0].main.temp)-273.15)+ '°C'
+
+    //city:
+    cardCityEl.textContent=data.city.name
+    
+    //country:
+    cardCountryEl.textContent=data.city.country
     
     //Wind:
     cardWindEl.textContent=Math.floor(data.list[0].wind.speed / 0.44704) +' mph'
@@ -146,7 +155,7 @@ var getApiData = function (city) {
 
         //Temp:
         // var divTempLabelEl = document.createElement('label')
-        // divTempLabelEl.textContent='Temperature : '
+        // divTempLabelEl.textContent='Temperature : ' 
         var spanTempEl = document.createElement('strong')
         spanTempEl.className='temp'
         spanTempEl.textContent =Math.floor((data.list[i].main.temp)-273.15)+ '°C'
