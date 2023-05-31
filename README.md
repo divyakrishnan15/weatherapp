@@ -19,8 +19,10 @@ https://divyakrishnan15.github.io/weatherapp/
 
 ### Mock demo:
 * current day forecast with the city map
+
 ![weather app](https://github.com/divyakrishnan15/weatherapp/assets/40469923/ad60123b-a6b8-4f35-9e2c-641fbdec57a6)
 
 * 5 day forecast and searched history
+
 ![weather app 2](https://github.com/divyakrishnan15/weatherapp/assets/40469923/fe34e3fa-a7fd-43b2-bb14-1c3d593fc886)
 
