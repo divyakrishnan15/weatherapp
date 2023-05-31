@@ -32,80 +32,91 @@
     <h1 class="navbar-brand mb-0 h1 navname">Weather DashBoard</h1>
   </nav>
 
-  <!-- city input -->
-  <div class="container container-left w-25 float-left">
+  <div class="main-card-container">
+    <!-- city input -->
+    <div class="container container-left w-25 float-left">
+      <!-- <div class="container container-left"> -->
 
 
-    <div class="card">
-      <h3 class="card-header text-uppercase">Search By City</h3>
-      <form id="user-form" class="card-body">
-        <label class="form-label" for="username">City Name:</label>
-        <input name="username" id="username" type="text" autofocus="true" class="form-input"/>
-        <button type="submit" class="btn btn-primary">search</button>
-      </form>
-    </div>
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By City</h3>
+        <form id="user-form" class="card-body">
+          <label class="form-label" for="username">City Name:</label>
+          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
+          <button type="submit" class="btn btn-primary">search</button>
+        </form>
+      </div>
 
-    <!-- searched history -->
-    <div class="card">
-      <h5 for="searchedHistory" class="labelsearch-hist m-1 card-header text-uppercase">Searched History</h5>
-    <div class="list-group">
-    </div>
-    </div>
-  </div>
-
-
-  <!-- //card -->
-  <div class="container contain-right">
-
-    <div class="city-temp-maincard">
-
-      <div class="curr-forecast">
-        <h4>Current Day Forecast:</h4>
-        <div class="card w-75 temp-card">
-          <div class="citycard-main d-flex flex-column">
-            <div>
-              <h2 class="citycard-cityname p-2"></h2>
-              
-              <img class="citycard-icon p-2" src="..." alt="">
-            </div>
-              <strong><h4 class="citycard-desc"></h4></strong>
-              <strong><h1 class="citycard-temp"></h1></strong>
-
-            <div class="col-main">
-              <div class="col1">  
-                <label for="citycardData" class="label m-1 p-2">City : <strong><span class="citycard-city"></span></strong></label>
-                <label for="citycardData" class="label m-1 p-2">Country : <strong><span class="citycard-country"></span></strong></label>
-              </div>
-
-              <div class="col2">
-                <label for="citycardData" class="label m-1 p-2">Wind : <strong><span class="citycard-wind"></span></strong></label>
-                <label for="citycardData" class="label m-1 p-2">Humidity : <strong><span class="citycard-humidity"></span></strong></label>
-            </div>
-          </div>
-            <h4 class="citycard-date p-2" style="text-align: center;margin-top: 20px;"></h4>
-          </div>
+      <!-- searched history -->
+      <div class="card-search">
+        <h5 for="searchedHistory" class="labelsearch-hist m-1 card-header text-uppercase">Searched History</h5>
+        <div class="list-group">
         </div>
-    </div>
-
-      <div class="map-main">
-        <h4>Google City Map</h4>
-        <iframe class="google-maps" width="400" height="300" style="border:0" loading="lazy" title="map" allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
 
-    <br/>
-    <h4 for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </h4>
-    <div class="dayForcastMain d-flex flex-row m-4 p-2">
 
-      <br/>
-      <br/>
+    <!-- //card -->
+    <div class="container contain-right">
+
+      <div class="city-temp-maincard">
+
+        <div class="curr-forecast">
+          <h4>Current Day Forecast:</h4>
+          <div class="card w-75 temp-card">
+            <div class="citycard-main d-flex flex-column">
+              <div>
+                <h2 class="citycard-cityname p-2"></h2>
+
+                <img class="citycard-icon p-2" src="..." alt="">
+              </div>
+              <strong>
+                <h4 class="citycard-desc"></h4>
+              </strong>
+              <strong>
+                <h1 class="citycard-temp"></h1>
+              </strong>
+
+              <div class="col-main">
+                <div class="col1">
+                  <label for="citycardData" class="label m-1 p-2">City : <strong><span
+                        class="citycard-city"></span></strong></label>
+                  <label for="citycardData" class="label m-1 p-2">Country : <strong><span
+                        class="citycard-country"></span></strong></label>
+                </div>
+
+                <div class="col2">
+                  <label for="citycardData" class="label m-1 p-2">Wind : <strong><span
+                        class="citycard-wind"></span></strong></label>
+                  <label for="citycardData" class="label m-1 p-2">Humidity : <strong><span
+                        class="citycard-humidity"></span></strong></label>
+                </div>
+              </div>
+              <h4 class="citycard-date p-2" style="text-align: center;margin-top: 20px;"></h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-main">
+          <h4>Google City Map</h4>
+          <iframe class="google-maps" width="400" height="300" style="border:0" loading="lazy" title="map"
+            allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <br />
+      <h4 for="searchedHistory" class="labelsearch-hist m-1 p-2">5-Day Forecast: </h4>
+      <div class="dayForcastMain d-flex flex-row m-4 p-2">
+
+        <br />
+        <br />
+      </div>
+
+
+
     </div>
 
-
-
   </div>
-
   <!-- </iframe> -->
 
 </body>

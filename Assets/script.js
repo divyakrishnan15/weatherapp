@@ -129,7 +129,7 @@ function todayForecast(data) {
   //Humidity:
   cardHumidityEl.textContent = data.list[0].main.humidity + "%";
 
-  searchedHistory()
+  searchedHistory();
 }
 
 function set5DayForecast(city, data) {
@@ -203,10 +203,9 @@ function set5DayForecast(city, data) {
 
 searchedHistory();
 
-
 function searchedHistory() {
-  document.querySelector('.list-group').innerHTML=""
-  weatherLSdata = JSON.parse(localStorage.getItem("weatherLS")) || {}
+  document.querySelector(".list-group").innerHTML = "";
+  weatherLSdata = JSON.parse(localStorage.getItem("weatherLS")) || {};
 
   Object.keys(weatherLSdata).map((ele) => {
     console.log("local storage length = ", ele);
@@ -218,7 +217,6 @@ function searchedHistory() {
     searchedHistoryEl.appendChild(aTagEl);
   });
 }
-
 
 searchedHistoryEl.addEventListener("click", searchedHistoryData);
 
