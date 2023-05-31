@@ -1,6 +1,6 @@
 # Time Schedule App
 
-## Built a WeatherApp using HTML,CSS,javascript,Web APIs(local storage,setInterval).
+## Built a WeatherApp using HTML,CSS,javascript,Web APIs(local storage).
 
 ### Features of the app:
 * As a user, I want create weather dashboard with form inputs
