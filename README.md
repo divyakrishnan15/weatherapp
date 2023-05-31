@@ -15,7 +15,7 @@
 
 
 ### Deployed site:
-
+https://divyakrishnan15.github.io/weatherapp/
 
 ### Mock demo:
 * current day forecast with the city map
