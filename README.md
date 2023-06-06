@@ -31,3 +31,4 @@ https://divyakrishnan15.github.io/weatherapp/
 ![image](https://github.com/divyakrishnan15/weatherapp/assets/40469923/65c894fe-7504-4394-a3f5-91c866a392fa)
 
 
+© 2023 Divya Krishnan Confidential and Proprietary. All Rights Reserved.
