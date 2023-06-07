@@ -1,4 +1,4 @@
-# Time Schedule App
+# Weather App
 
 ## Built a WeatherApp using HTML,CSS,javascript,Web APIs(local storage).
 
